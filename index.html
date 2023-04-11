@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso DOM</title>
+    <style>
+      .cor-do-texto {
+        color: rgb(244, 238, 238);
+      }
+
+      #segundo {
+        color: blue;
+      }
+
+      ul > li:last-child {
+        font-weight: bold;
+        color: green;
+      }
+      img {
+        width: 200px;
+        display: inline;
+        align-items: center;
+        padding-left: 500px;
+      }
+      .alerta {
+        padding: 5px;
+        text-align: center;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+      }
+      .caixa {
+        border: 1px black solid;
+      }
+
+      .container {
+        border: 1px solid black;
+        padding: 20px;
+        margin: 20px;
+      }
+      p {
+        background-color: blueviolet;
+        color: white;
+      }
+    </style>
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <h1 id="titulo">HTML !!!!</h1>
+
+    <div class="container">Dentro do DIV</div>
+
+    <div class="cor-do-texto">Texto dentro de uma DIV</div>
+    <form action="" method="post">
+      <input type="text" name="text_usuario" />
+    </form>
+
+    <p id="primeiro">Primeiro paragrafo</p>
+    <p id="segundo">Segundo paragrafo</p>
+
+    <ul>
+      <li>Primeiro</li>
+      <li>Segundo</li>
+      <li>Terceiro</li>
+      <li>Quarto</li>
+    </ul>
+
+    <div class="caixa"><p>Neste div apenas existe um paragrafo</p></div>
+
+    <button onclick="apertar()">Clicar Aqui</button>
+
+    <img src="rapaz.png" alt="pixel art de um homem" onclick="executar()" />
+
+    <script>
+     
+     // adicionar conteudo em um local especifico metodos
+      //before
+      //prepend
+      //append
+      //after
+
+      let textoteste = document.querySelector(".container");
+
+      textoteste.before("AAAA"); //em cima da div
+      textoteste.prepend("inicio do conteudo "); // dentro da div no inicio
+      textoteste.append(" Final da DIV");
+      textoteste.after("Depois da Div");
+
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      let p3 = document.createElement("p");
+      let p4 = document.createElement("p");
+      p1.innerText = "Paragrafo 1";
+      p2.innerText = "Paragrafo 2";
+      p3.innerText = "Paragrafo 3";
+      p4.innerText = "Paragrafo 4";
+
+      textoteste.before(p1);
+      textoteste.prepend(p2);
+      textoteste.append(p3);
+      textoteste.after(p4);
+
+    //insertAdjaventText beforebegin / afterbegin / beforeend / afterend
+
+      // function saudacao(){
+      //     alert(window.innerWidth);
+      // }
+      // saudacao(); mostra uma janela com o tamanho ou texto
+      document.body.style.background = "red"; // altera o fundo
+      document.getElementById("titulo").style.color = "white"; // altera fonte
+      // if(confirm('Deseja ir para o Google?')){
+      //     location.href = 'http://google.com.br'
+      // } Permite uma janela para ir para outro site
+      console.log((document.body.childNodes[1].innerText = "Novo titulo")); // mostra todos filhos dentro do body
+
+      /*
+    getElementById - seu valor deve ser unico
+    getElementByName - pega dentro da tag nome geralmente usado dentro de formulário
+    getElementByTagName - pega tags como div p span
+    getElementByClassName - 
+    */
+      document.getElementById("titulo").innerText = "Apresentando novo titulo";
+      document.getElementsByName("text_usuario")[0].value = "Seu nome";
+      document.getElementsByClassName("cor-do-texto");
+
+      /*
+   querySelector - um seletor do css
+   querySelectorAll 
+   */
+      let e = document.querySelector("#segundo");
+
+      Document.querySelector("ul > li:last-child");
+
+      /*
+    innerHTML - apresenta os elementos html e pode usar tags no inner sem aparecer
+    outerHTML - pode alterar todo html
+    innerText - alterar o texto
+    atributos - pode alterar atributos no elemento
+    operações no console - f12 no browser onde podemos digitar o codigo js
+    */
+
+      // usando funções para alterar o conteudo
+      function executar() {
+        let e = document.querySelector("#titulo");
+        e.innerText = "Usando função";
+        e.style.color = "blue";
+        document.body.style.background = "white";
+      }
+
+      //hasAttribute se o elemento tem ou não o atributo
+      //getAttribute pega o id do elemento
+      //setAttribute define um atributo que o elemento não tem
+      //removeAttribute - remove o atribute do elemento
+      //attributes coleção de todos nossos atributos pelo indice
+
+      //criar o elemento
+      function apertar() {
+        let novo_elemento = document.createElement("p");
+        novo_elemento.className = "alerta";
+        novo_elemento.textContent = "Esta é uma mensagem de alerta!";
+
+        //adicionar o novo elemento ao div existente
+        let elemento = document.querySelector(".caixa");
+        elemento.appendChild(novo_elemento);
+      }
+    </script>
+  </body>
+</html>
