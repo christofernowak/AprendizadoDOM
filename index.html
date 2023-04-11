@@ -34,11 +34,23 @@
       .caixa {
         border: 1px black solid;
       }
+
+      .container {
+        border: 1px solid black;
+        padding: 20px;
+        margin: 20px;
+      }
+      p {
+        background-color: blueviolet;
+        color: white;
+      }
     </style>
     <link rel="stylesheet" href="" />
   </head>
   <body>
     <h1 id="titulo">HTML !!!!</h1>
+
+    <div class="container">Dentro do DIV</div>
 
     <div class="cor-do-texto">Texto dentro de uma DIV</div>
     <form action="" method="post">
@@ -62,6 +74,36 @@
     <img src="rapaz.png" alt="pixel art de um homem" onclick="executar()" />
 
     <script>
+     
+     // adicionar conteudo em um local especifico metodos
+      //before
+      //prepend
+      //append
+      //after
+
+      let textoteste = document.querySelector(".container");
+
+      textoteste.before("AAAA"); //em cima da div
+      textoteste.prepend("inicio do conteudo "); // dentro da div no inicio
+      textoteste.append(" Final da DIV");
+      textoteste.after("Depois da Div");
+
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      let p3 = document.createElement("p");
+      let p4 = document.createElement("p");
+      p1.innerText = "Paragrafo 1";
+      p2.innerText = "Paragrafo 2";
+      p3.innerText = "Paragrafo 3";
+      p4.innerText = "Paragrafo 4";
+
+      textoteste.before(p1);
+      textoteste.prepend(p2);
+      textoteste.append(p3);
+      textoteste.after(p4);
+
+    //insertAdjaventText beforebegin / afterbegin / beforeend / afterend
+
       // function saudacao(){
       //     alert(window.innerWidth);
       // }
@@ -104,6 +146,7 @@
         let e = document.querySelector("#titulo");
         e.innerText = "Usando função";
         e.style.color = "blue";
+        document.body.style.background = "white";
       }
 
       //hasAttribute se o elemento tem ou não o atributo
@@ -113,17 +156,15 @@
       //attributes coleção de todos nossos atributos pelo indice
 
       //criar o elemento
-     function apertar() {
-      let novo_elemento = document.createElement('p');
-      novo_elemento.className = 'alerta'
-      novo_elemento.textContent = 'Esta é uma mensagem de alerta!'
+      function apertar() {
+        let novo_elemento = document.createElement("p");
+        novo_elemento.className = "alerta";
+        novo_elemento.textContent = "Esta é uma mensagem de alerta!";
 
-      //adicionar o novo elemento ao div existente
-      let elemento = document.querySelector('.caixa')
-      elemento.appendChild(novo_elemento);
-    }
-
-
+        //adicionar o novo elemento ao div existente
+        let elemento = document.querySelector(".caixa");
+        elemento.appendChild(novo_elemento);
+      }
     </script>
   </body>
 </html>
